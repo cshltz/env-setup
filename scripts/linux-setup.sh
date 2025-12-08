@@ -43,17 +43,27 @@ fi
 echo "Cleaning up temp folder"
 rm -rf "$HOME/tmp"
 
-#turn this into wezterm?
-#update tmux
-if command -v tmux &>/dev/null; then
-    echo "tmux already installed"
-else
-    if [[ $1 == "deb" ]]; then
-        sudo apt install tmux || exit
-    elif [[ $1 == "arch" ]]; then
-        sudo pacman -S tmux || exit
-    fi
+# #update wezterm
+if [[ $1 == "deb" ]]; then
+    curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+    echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.lis
+    sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
+    sudo apt update
+    sudo apt install wezterm
+elif [[ $1 == "arch" ]]; then
+    sudo pacman -S wezterm || exit
 fi
+
+# #update tmux
+# if command -v tmux &>/dev/null; then
+#     echo "tmux already installed"
+# else
+#     if [[ $1 == "deb" ]]; then
+#         sudo apt install tmux || exit
+#     elif [[ $1 == "arch" ]]; then
+#         sudo pacman -S tmux || exit
+#     fi
+# fi
 
 #update zsh
 echo "Updating ZSH"

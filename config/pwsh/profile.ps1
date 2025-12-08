@@ -300,7 +300,17 @@ Set-PSReadLineKeyHandler -Key RightArrow `
     }
 }
 
-Function CDD {Set-Location -Path D:\dev}
+Function cdd {Set-Location -Path D:\dev\proj}
+Function nvimHere($arg1) {
+    if($arg1){
+        if(Test-Path($arg1)){
+            nvim $arg1
+        }
+    }
+    else{
+        nvim .
+    }
+}
 
 Import-Module Posh-Git
 Import-Module PowerColorLS
@@ -311,16 +321,6 @@ function LSNoIcons {
     PowerColorLS --hide-icons @args
 }
 Set-Alias -Name ls -Value LSNoIcons -Option AllScope
-
-# function prompt {
-#     # $leftSide = "$Env:UserName 󰅂"
-#     # $rightSide = & $GitPromptScriptBlock
-#     # $padding = (Get-Host).UI.RawUI.WindowSize.Width - $leftSide.Length - $rightSide.Length
-#     $gitInfo = Write-VcsStatus
-#     $prompt = Write-Prompt "$Env:UserName 󰅂" -ForegroundColor ([ConsoleColor]::Red)
-#     # $prompt += (" " * $padding)
-#     $prompt += & $GitPromptScriptBlock
-#     if ($prompt) { "$prompt " } else { " " }
-# }
+Set-Alias -Name vi -Value nvimHere
 
 Set-PSReadlineOption -BellStyle None
