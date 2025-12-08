@@ -1,17 +1,15 @@
 return {
-  {
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('tokyonight').setup {
-        styles = {
-          comments = { italic = false },
-        },
-      }
-
-      vim.cmd.colorscheme 'tokyonight-storm'
-    end,
+  'folke/tokyonight.nvim',
+  lazy = false,
+  priority = 1000,
+  opts = {
+    style = 'storm',
+    styles = {
+      functions = {},
+    },
   },
+  init = function()
+    vim.cmd.hi 'Comment gui=none'
+    vim.cmd 'colorscheme tokyonight'
+  end,
 }

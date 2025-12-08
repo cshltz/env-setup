@@ -1,6 +1,6 @@
 return {
   {
-    'nvim-mini/mini.notify',
+    'NMAC427/guess-indent.nvim',
     lazy = true,
     opts = {},
   },

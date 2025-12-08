@@ -19,7 +19,7 @@ return {
         opts = {
           registries = {
             'github:mason-org/mason-registry',
-            'github:Crashdummyy/mason-registry',
+            -- 'github:Crashdummyy/mason-registry',
           },
         },
       },
@@ -34,18 +34,11 @@ return {
         callback = function(event)
           local map = function(keys, func, desc, mode)
             mode = mode or 'n'
-            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
           end
-
-          map('<leader>gn', vim.lsp.buf.rename, 'Re[n]ame')
-          map('<leader>ga', vim.lsp.buf.code_action, 'Goto Code [A]ction', { 'n', 'x' })
-          map('<leader>gr', require('telescope.builtin').lsp_references, 'Goto [R]eferences')
-          map('<leader>gi', require('telescope.builtin').lsp_implementations, 'Goto [I]mplementation')
-          map('<leader>gd', require('telescope.builtin').lsp_definitions, 'Goto [D]efinition')
-          map('<leader>gD', vim.lsp.buf.declaration, 'Goto [D]eclaration')
-          map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
-          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
-          map('<leader>gt', require('telescope.builtin').lsp_type_definitions, 'Goto [T]ype Definition')
+          --
+          map('<leader>gn', vim.lsp.buf.rename, 'Rename')
+          map('<leader>ga', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
 
           ---@param client vim.lsp.Client
           ---@param method vim.lsp.protocol.Method
@@ -81,12 +74,6 @@ return {
                 vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
               end,
             })
-          end
-
-          if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-            map('<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-            end, '[T]oggle Inlay [H]ints')
           end
         end,
       })
@@ -128,42 +115,42 @@ return {
         pyright = {},
         rust_analyzer = {},
         bashls = {},
-        roslyn = {
-          on_attach = function()
-            vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
-              group = vim.api.nvim_create_augroup('DotnetCodeLensRefresh', { clear = true }),
-              callback = function(args)
-                vim.lsp.codelens.refresh { bufnr = args.buf }
-              end,
-              desc = 'Refresh .NET code lense on InsertLeave, BufEnter and CursorHold',
-            })
-          end,
-          settings = {
-            ['csharp|completion'] = {
-              dotnet_provide_regex_completions = true,
-              dotnet_show_completion_items_from_unimported_namespaces = true,
-              dotnet_show_name_completion_suggestions = true,
-            },
-            ['csharp|code_lens'] = {
-              dotnet_enable_references_code_lens = true,
-              dotnet_enable_tests_code_lens = true,
-            },
-            ['csharp|inlay_hints'] = {
-              csharp_enable_inlay_hints_for_implicit_object_creation = true,
-              csharp_enable_inlay_hints_for_implicit_variable_types = true,
-              csharp_enable_inlay_hints_for_lambda_parameter_types = true,
-              csharp_enable_inlay_hints_for_types = true,
-              dotnet_enable_inlay_hints_for_indexer_parameters = true,
-              dotnet_enable_inlay_hints_for_literal_parameters = true,
-              dotnet_enable_inlay_hints_for_object_creation_parameters = true,
-              dotnet_enable_inlay_hints_for_other_parameters = true,
-              dotnet_enable_inlay_hints_for_parameters = true,
-              dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix = false,
-              dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name = false,
-              dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = false,
-            },
-          },
-        },
+        -- roslyn = {
+        --   on_attach = function()
+        --     vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
+        --       group = vim.api.nvim_create_augroup('DotnetCodeLensRefresh', { clear = true }),
+        --       callback = function(args)
+        --         vim.lsp.codelens.refresh { bufnr = args.buf }
+        --       end,
+        --       desc = 'Refresh .NET code lense on InsertLeave, BufEnter and CursorHold',
+        --     })
+        --   end,
+        --   settings = {
+        --     ['csharp|completion'] = {
+        --       dotnet_provide_regex_completions = true,
+        --       dotnet_show_completion_items_from_unimported_namespaces = true,
+        --       dotnet_show_name_completion_suggestions = true,
+        --     },
+        --     ['csharp|code_lens'] = {
+        --       dotnet_enable_references_code_lens = true,
+        --       dotnet_enable_tests_code_lens = true,
+        --     },
+        --     ['csharp|inlay_hints'] = {
+        --       csharp_enable_inlay_hints_for_implicit_object_creation = true,
+        --       csharp_enable_inlay_hints_for_implicit_variable_types = true,
+        --       csharp_enable_inlay_hints_for_lambda_parameter_types = true,
+        --       csharp_enable_inlay_hints_for_types = true,
+        --       dotnet_enable_inlay_hints_for_indexer_parameters = true,
+        --       dotnet_enable_inlay_hints_for_literal_parameters = true,
+        --       dotnet_enable_inlay_hints_for_object_creation_parameters = true,
+        --       dotnet_enable_inlay_hints_for_other_parameters = true,
+        --       dotnet_enable_inlay_hints_for_parameters = true,
+        --       dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix = false,
+        --       dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name = false,
+        --       dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = false,
+        --     },
+        --   },
+        -- },
 
         lua_ls = {
           -- cmd = { ... },

@@ -3,7 +3,7 @@
 --  For more options, you can see `:help option-list`
 
 -- set shell type
--- vim.opt.shell = 'powershell'
+vim.opt.shell = 'pwsh'
 
 -- Make line numbers default
 vim.opt.number = true
@@ -59,7 +59,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10

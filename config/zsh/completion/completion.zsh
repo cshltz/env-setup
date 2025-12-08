@@ -10,7 +10,7 @@
 # +---------+
 
 # source ./gambit.zsh
-source $ZDOTDIR/colors/catpp-colors.zsh
+# source $ZDOTDIR/colors/catpp-colors.zsh
 
 # Load more completions
 # fpath=($DOTFILES/zsh/plugins/zsh-completions/src $fpath)
@@ -77,15 +77,11 @@ zstyle ':completion:*' complete-options true
 
 zstyle ':completion:*' file-sort modification
 
-# zstyle ':completion:*:*:*:*:corrections' format '%F{${catppuccin_yellow}}!- %d (errors: %e) -!%f'
-# zstyle ':completion:*:*:*:*:descriptions' format '%F{${catppuccin_blue}}-- %D %d --%f'
-# zstyle ':completion:*:*:*:*:messages' format ' %F{${catppuccin_lavender}} -- %d --%f'
-# zstyle ':completion:*:*:*:*:warnings' format ' %F{${catppuccin_red}}-- no matches found --%f'
-
 zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
 zstyle ':completion:*:*:*:*:descriptions' format '%F{blue}-- %D %d --%f'
 zstyle ':completion:*:*:*:*:messages' format ' %F{purple} -- %d --%f'
 zstyle ':completion:*:*:*:*:warnings' format ' %F{red}-- no matches found --%f'
+
 # zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 # Colors for files and directory
 zstyle ':completion:*:*:*:*:default' list-colors ${(s.:.)LS_COLORS}

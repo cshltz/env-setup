@@ -28,7 +28,7 @@ return {
           unlet g:loaded_netrwPlugin
           runtime! plugin/netrwPlugin.vim
           silent Explore %
-        ]]
+          ]]
               vim.api.nvim_clear_autocmds { group = 'RemoteFile' }
               break
             end
@@ -37,14 +37,9 @@ return {
       })
     end,
     keys = {
-      { '<leader>te', ':Neotree reveal<CR>', { desc = '[T]oggle [E]xplorer' } },
+      { '<leader>oe', ':Neotree reveal<CR>', { desc = '[O]pen [E]xplorer' } },
     },
     opts = {
-      window = {
-        mappings = {
-          ['<leader>te'] = 'close_window',
-        },
-      },
       filesystem = {
         hijack_netrw_behavior = 'open_current',
         filtered_items = {
@@ -59,6 +54,21 @@ return {
             '.pretterrc.json',
           },
           never_show = { '.git' },
+        },
+        window = {
+          mappings = {
+            ['<leader>oe'] = 'close_window',
+            ['<leader>dn'] = 'easy',
+          },
+        },
+        commands = {
+          ['easy'] = function(state)
+            local node = state.tree:get_node()
+            local path = node.type == 'directory' and node.path or vim.fs.dirname(node.path)
+            require('easy-dotnet').create_new_item(path, function()
+              require('neo-tree.sources.manager').refresh(state.name)
+            end)
+          end,
         },
       },
       event_handlers = {

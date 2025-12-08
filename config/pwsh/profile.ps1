@@ -3,7 +3,7 @@ using namespace System.Management.Automation.Language
 
 
 #######################################################
-oh-my-posh --init --shell pwsh --config  $HOME\AppData\Local\Programs\oh-my-posh\themes\gentlenight.omp.json | Invoke-Expression
+# oh-my-posh --init --shell pwsh --config  $HOME\AppData\Local\Programs\oh-my-posh\themes\gentlenight.omp.json | Invoke-Expression
 Set-PSReadLineOption -EditMode Vi
 
 # Searching for commands with up/down arrow is really handy.  The
@@ -300,7 +300,17 @@ Set-PSReadLineKeyHandler -Key RightArrow `
     }
 }
 
-Function CDD {Set-Location -Path D:\dev}
+Function cdd {Set-Location -Path D:\dev\proj}
+Function nvimHere($arg1) {
+    if($arg1){
+        if(Test-Path($arg1)){
+            nvim $arg1
+        }
+    }
+    else{
+        nvim .
+    }
+}
 
 Import-Module Posh-Git
 Import-Module PowerColorLS
@@ -311,16 +321,30 @@ function LSNoIcons {
     PowerColorLS --hide-icons @args
 }
 Set-Alias -Name ls -Value LSNoIcons -Option AllScope
+Set-Alias -Name vi -Value nvimHere
 
-# function prompt {
-#     # $leftSide = "$Env:UserName 󰅂"
-#     # $rightSide = & $GitPromptScriptBlock
-#     # $padding = (Get-Host).UI.RawUI.WindowSize.Width - $leftSide.Length - $rightSide.Length
-#     $gitInfo = Write-VcsStatus
-#     $prompt = Write-Prompt "$Env:UserName 󰅂" -ForegroundColor ([ConsoleColor]::Red)
-#     # $prompt += (" " * $padding)
-#     $prompt += & $GitPromptScriptBlock
-#     if ($prompt) { "$prompt " } else { " " }
-# }
+function prompt {
+    # $oc = $host.ui.RawUI.ForegroundColor
+    # $Host.UI.RawUI.ForegroundColor = "Red"
+    # $leftMessage =$Env:UserName + " 󰅂"
+    # $Host.UI.Write($leftMessage)
+    #
+    # $rightMessage = ([string]$pwd).Replace($HOME, "~")
+    # $startposx = $Host.UI.RawUI.windowsize.width - $rightMessage.length
+    # $startposy = $Host.UI.RawUI.CursorPosition.Y
+    # $Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates $startposx,$startposy
+    # $Host.UI.RawUI.ForegroundColor = $oc
+    # $Host.UI.Write($rightMessage)
+    #
+    # $writeposx = $leftMessage.length - 1
+    # $writeposy = $Host.UI.RawUI.CursorPosition.Y
+    # $Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates $writeposx,$writeposy
+    # return " "
 
+    Write-Host $Env:UserName -NoNewLine -ForegroundColor ([ConsoleColor]::Red)
+    Write-Host " | " -NoNewLine
+    Write-Host ([string]$pwd).Replace($HOME, "~") -ForegroundColor ([ConsoleColor]::Yellow)
+    Write-Host "󰅂" -NoNewLine
+    return " "
+}
 Set-PSReadlineOption -BellStyle None

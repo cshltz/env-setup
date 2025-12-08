@@ -1,9 +1,9 @@
 return {
-  {
-    'nvim-lualine/lualine.nvim',
-    config = true,
-    options = {
-      theme = 'catppuccin',
+    {
+        'nvim-lualine/lualine.nvim',
+        config = true,
+        options = {
+            theme = 'auto',
+        },
     },
-  },
 }
