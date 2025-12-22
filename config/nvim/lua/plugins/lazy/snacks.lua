@@ -65,6 +65,9 @@ return {
       notification = {
         -- wo = { wrap = true } -- Wrap notifications
       },
+      terminal = {
+        position = 'right',
+      },
     },
   },
   keys = {
