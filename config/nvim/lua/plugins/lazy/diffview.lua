@@ -10,6 +10,7 @@ return {
       { '<leader>dvc', '<cmd>DiffviewClose<cr>', desc = '[D]iff[v]iew [C]lose' },
     },
     opts = {
+      enhanced_diff_hl = true,
       view = {
         merge_tool = {
           layout = 'diff3_mixed',
