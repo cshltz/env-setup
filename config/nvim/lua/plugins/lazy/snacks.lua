@@ -42,7 +42,6 @@ return {
       timeout = 3000,
       wrap = true,
     },
-    lazygit = {},
     dashboard = {
       sections = {
         { section = 'header' },
@@ -52,22 +51,27 @@ return {
         { section = 'startup' },
       },
     },
+    lazygit = {},
     indent = {},
     scope = {},
     toggle = {},
     bigfile = {},
     input = {},
     quickfile = {},
-    -- scroll = {},
+    layout = {},
+    terminal = {},
     statuscolumn = {},
     words = {},
     styles = {
       notification = {
-        -- wo = { wrap = true } -- Wrap notifications
+        wo = { wrap = true }, -- Wrap notifications
       },
       terminal = {
-        width = 0.5,
+        width = 0.6,
         position = 'right',
+      },
+      lazygit = {
+        width = 0.8,
       },
     },
   },
