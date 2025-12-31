@@ -2,6 +2,9 @@ return {
   {
     'GustavEikaas/easy-dotnet.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'folke/snacks.nvim' },
+    lazy = true,
+    cmd = { 'Dotnet', 'DotnetTest', 'DotnetBuild' },
+    ft = { 'cs', 'csproj' },
     config = function()
       require('easy-dotnet').setup()
 
