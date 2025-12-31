@@ -66,6 +66,7 @@ return {
         -- wo = { wrap = true } -- Wrap notifications
       },
       terminal = {
+        width = 0.5,
         position = 'right',
       },
     },
@@ -558,13 +559,13 @@ return {
       end,
       desc = 'Dismiss All Notifications',
     },
-    {
-      '<leader>ot',
-      function()
-        Snacks.terminal.open()
-      end,
-      desc = 'Terminal',
-    },
+    -- {
+    --   '<leader>ot',
+    --   function()
+    --     Snacks.terminal.open()
+    --   end,
+    --   desc = 'Terminal',
+    -- },
     {
       '<leader>tt',
       function()
