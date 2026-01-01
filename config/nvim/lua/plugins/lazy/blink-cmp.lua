@@ -1,7 +1,7 @@
 return {
   {
     'saghen/blink.cmp',
-    event = 'VimEnter',
+    event = { 'BufReadPre', 'BufNewFile' },
     version = '1.*',
     dependencies = {
       {

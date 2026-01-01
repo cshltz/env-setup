@@ -1,7 +1,7 @@
 return {
   {
     'sindrets/diffview.nvim',
-    lazy = false,
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
