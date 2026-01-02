@@ -550,7 +550,7 @@ return {
       desc = 'Rename File',
     },
     {
-      '<leader>ol',
+      '<leader>og',
       function()
         Snacks.lazygit()
       end,

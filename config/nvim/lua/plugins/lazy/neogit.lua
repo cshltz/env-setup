@@ -6,7 +6,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'sindrets/diffview.nvim',
-      'nvim-telescope/telescope.nvim',
+      'folke/snacks.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
     opts = {
@@ -16,7 +16,7 @@ return {
       },
     },
     keys = {
-      { '<leader>GG', '<cmd>Neogit<cr>', desc = '[G]it UI' },
+      { '<leader>og', '<cmd>Neogit<cr>', desc = 'Neogit' },
     },
   },
 }
