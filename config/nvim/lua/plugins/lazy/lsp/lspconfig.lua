@@ -1,18 +1,5 @@
--- LSP Plugins
 return {
   {
-    'folke/lazydev.nvim',
-    enabled = true,
-    ft = 'lua',
-    opts = {
-      library = {
-        -- Load luvit types when the `vim.uv` word is found
-        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-      },
-    },
-  },
-  {
-    -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     enabled = true,
     event = { 'BufReadPre', 'BufNewFile' },
@@ -39,7 +26,7 @@ return {
             mode = mode or 'n'
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
           end
-          --
+
           map('<leader>gn', vim.lsp.buf.rename, 'Rename')
           map('<leader>ga', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
 
