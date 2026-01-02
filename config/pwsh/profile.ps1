@@ -3,7 +3,6 @@ using namespace System.Management.Automation.Language
 
 
 #######################################################
-# oh-my-posh --init --shell pwsh --config  $HOME\AppData\Local\Programs\oh-my-posh\themes\gentlenight.omp.json | Invoke-Expression
 Set-PSReadLineOption -EditMode Vi
 
 # Searching for commands with up/down arrow is really handy.  The
