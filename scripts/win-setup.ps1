@@ -18,7 +18,7 @@ winget install --id curl.curl --source winget
 Write-Output "Install ripgrep"
 winget install --id BurntSushi.ripgrep.MSVC --source winget
 Write-Output "Install fd"
-winget install -- sharkdp.fd --source winget
+winget install --id sharkdp.fd --source winget
 Write-Output "Install go"
 winget install --id golang.go --source winget
 Write-Output "Install node"
