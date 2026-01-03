@@ -7,13 +7,27 @@ return {
     cmd = 'CodeDiff',
     keys = {
       {
-        '<leader>od',
+        '<leader>td',
         '<cmd>CodeDiff<cr>',
         desc = 'Difftool',
       },
     },
-    opts = {},
     config = function()
+      require('vscode-diff').setup {
+        keymaps = {
+          view = {
+            next_file = 'nf',
+            prev_file = 'pf',
+            next_hunk = 'nc',
+            prev_hunk = 'pc',
+          },
+          conflict = {
+            next_conflict = 'nx',
+            prev_conflict = 'px',
+          },
+        },
+      }
+
       Snacks = require 'snacks'
       local function walk_in_codediff(picker, item)
         picker:close()

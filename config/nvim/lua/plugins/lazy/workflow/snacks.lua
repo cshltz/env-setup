@@ -107,7 +107,7 @@ return {
       desc = 'Command History',
     },
     {
-      '<leader>te',
+      '<leader>oe',
       function()
         Snacks.explorer.reveal()
       end,
@@ -537,7 +537,7 @@ return {
       desc = 'Rename File',
     },
     {
-      '<leader>tg',
+      '<leader>og',
       function()
         Snacks.lazygit()
       end,
