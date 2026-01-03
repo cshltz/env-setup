@@ -414,13 +414,13 @@ return {
       end,
       desc = 'Git Branches',
     },
-    -- {
-    --   '<leader>Gl',
-    --   function()
-    --     Snacks.picker.git_log()
-    --   end,
-    --   desc = 'Git Log',
-    -- },
+    {
+      '<leader>Gl',
+      function()
+        Snacks.picker.git_log()
+      end,
+      desc = 'Git Log',
+    },
     {
       '<leader>GL',
       function()
@@ -428,20 +428,20 @@ return {
       end,
       desc = 'Git Log Line',
     },
-    -- {
-    --   '<leader>Gs',
-    --   function()
-    --     Snacks.picker.git_status()
-    --   end,
-    --   desc = 'Git Status',
-    -- },
-    -- {
-    --   '<leader>GS',
-    --   function()
-    --     Snacks.picker.git_stash()
-    --   end,
-    --   desc = 'Git Stash',
-    -- },
+    {
+      '<leader>Gs',
+      function()
+        Snacks.picker.git_status()
+      end,
+      desc = 'Git Status',
+    },
+    {
+      '<leader>GS',
+      function()
+        Snacks.picker.git_stash()
+      end,
+      desc = 'Git Stash',
+    },
     {
       '<leader>Gd',
       function()
@@ -449,13 +449,13 @@ return {
       end,
       desc = 'Git Diff (Hunks)',
     },
-    -- {
-    --   '<leader>Gf',
-    --   function()
-    --     Snacks.picker.git_log_file()
-    --   end,
-    --   desc = 'Git Log File',
-    -- },
+    {
+      '<leader>Gf',
+      function()
+        Snacks.picker.git_log_file()
+      end,
+      desc = 'Git Log File',
+    },
     {
       '<leader>GB',
       function()

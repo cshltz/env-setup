@@ -117,25 +117,26 @@ return {
       end
 
       -- Keymaps
-      vim.keymap.set('n', '<leader>Gs', function()
-        git_pickaxe { global = false }
-      end, { desc = 'Git Search (Buffer)' })
-
-      vim.keymap.set('n', '<leader>GS', function()
-        git_pickaxe { global = true }
-      end, { desc = 'Git Search (Global)' })
-
-      vim.keymap.set({ 'n', 't' }, '<leader>Gf', function()
-        Snacks.picker.git_log_file {
-          confirm = walk_in_codediff,
-        }
-      end, { desc = 'Git Log File' })
-
-      vim.keymap.set({ 'n', 't' }, '<leader>Gl', function()
-        Snacks.picker.git_log {
-          confirm = walk_in_codediff,
-        }
-      end, { desc = 'Git Log' })
+      -- CONFLICTS WITH SNACKS
+      --   vim.keymap.set('n', '<leader>Gs', function()
+      --     git_pickaxe { global = false }
+      --   end, { desc = 'Git Search (Buffer)' })
+      --
+      --   vim.keymap.set('n', '<leader>GS', function()
+      --     git_pickaxe { global = true }
+      --   end, { desc = 'Git Search (Global)' })
+      --
+      --   vim.keymap.set({ 'n', 't' }, '<leader>Gf', function()
+      --     Snacks.picker.git_log_file {
+      --       confirm = walk_in_codediff,
+      --     }
+      --   end, { desc = 'Git Log File' })
+      --
+      --   vim.keymap.set({ 'n', 't' }, '<leader>Gl', function()
+      --     Snacks.picker.git_log {
+      --       confirm = walk_in_codediff,
+      --     }
+      --   end, { desc = 'Git Log' })
     end,
   },
 }
