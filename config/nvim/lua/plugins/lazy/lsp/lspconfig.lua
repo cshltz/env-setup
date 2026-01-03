@@ -105,43 +105,6 @@ return {
         pyright = {},
         rust_analyzer = {},
         bashls = {},
-        -- roslyn = {
-        --   on_attach = function()
-        --     vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
-        --       group = vim.api.nvim_create_augroup('DotnetCodeLensRefresh', { clear = true }),
-        --       callback = function(args)
-        --         vim.lsp.codelens.refresh { bufnr = args.buf }
-        --       end,
-        --       desc = 'Refresh .NET code lense on InsertLeave, BufEnter and CursorHold',
-        --     })
-        --   end,
-        --   settings = {
-        --     ['csharp|completion'] = {
-        --       dotnet_provide_regex_completions = true,
-        --       dotnet_show_completion_items_from_unimported_namespaces = true,
-        --       dotnet_show_name_completion_suggestions = true,
-        --     },
-        --     ['csharp|code_lens'] = {
-        --       dotnet_enable_references_code_lens = true,
-        --       dotnet_enable_tests_code_lens = true,
-        --     },
-        --     ['csharp|inlay_hints'] = {
-        --       csharp_enable_inlay_hints_for_implicit_object_creation = true,
-        --       csharp_enable_inlay_hints_for_implicit_variable_types = true,
-        --       csharp_enable_inlay_hints_for_lambda_parameter_types = true,
-        --       csharp_enable_inlay_hints_for_types = true,
-        --       dotnet_enable_inlay_hints_for_indexer_parameters = true,
-        --       dotnet_enable_inlay_hints_for_literal_parameters = true,
-        --       dotnet_enable_inlay_hints_for_object_creation_parameters = true,
-        --       dotnet_enable_inlay_hints_for_other_parameters = true,
-        --       dotnet_enable_inlay_hints_for_parameters = true,
-        --       dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix = false,
-        --       dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name = false,
-        --       dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = false,
-        --     },
-        --   },
-        -- },
-
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -157,31 +120,28 @@ return {
         },
       }
 
-      -- vim.lsp.config('roslyn', {})
+      local debuggers = {
+        'delve',
+        'codelldb',
+        'netcoredbg',
+      }
 
-      -- Ensure the servers and tools above are installed
-      --
-      -- To check the current status of installed tools and/or manually install
-      -- other tools, you can run
-      --    :Mason
-      --
-      -- You can press `g?` for help in this menu.
-      --
-      -- `mason` had to be setup earlier: to configure its options see the
-      -- `dependencies` table for `nvim-lspconfig` above.
-      --
-      -- You can add other tools here that you want Mason to install
-      -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
+      local linters = {}
+
+      local formatters = {
         'stylua',
         'prettier',
         'csharpier',
-      })
+      }
+
+      local ensure_installed = vim.tbl_keys(servers or {})
+      vim.list_extend(ensure_installed, debuggers)
+      vim.list_extend(ensure_installed, linters)
+      vim.list_extend(ensure_installed, formatters)
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+        ensure_installed = {}, -- explicitly set to an empty table (populates installs via mason-tool-installer)
         automatic_installation = false,
         handlers = {
           function(server_name)

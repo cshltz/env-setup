@@ -107,14 +107,7 @@ return {
       desc = 'Command History',
     },
     {
-      '<leader>n',
-      function()
-        Snacks.picker.notifications()
-      end,
-      desc = 'Notification History',
-    },
-    {
-      '<leader>oe',
+      '<leader>te',
       function()
         Snacks.explorer.reveal()
       end,
@@ -162,6 +155,13 @@ return {
         Snacks.picker.recent()
       end,
       desc = 'Recent',
+    },
+    {
+      '<leader>fC',
+      function()
+        Snacks.picker.colorschemes()
+      end,
+      desc = 'Colorschemes',
     },
     -- Grep
     {
@@ -341,13 +341,6 @@ return {
       end,
       desc = 'Undo History',
     },
-    {
-      '<leader>uC',
-      function()
-        Snacks.picker.colorschemes()
-      end,
-      desc = 'Colorschemes',
-    },
     -- LSP
     {
       '<leader>gd',
@@ -421,13 +414,13 @@ return {
       end,
       desc = 'Git Branches',
     },
-    {
-      '<leader>Gl',
-      function()
-        Snacks.picker.git_log()
-      end,
-      desc = 'Git Log',
-    },
+    -- {
+    --   '<leader>Gl',
+    --   function()
+    --     Snacks.picker.git_log()
+    --   end,
+    --   desc = 'Git Log',
+    -- },
     {
       '<leader>GL',
       function()
@@ -435,20 +428,20 @@ return {
       end,
       desc = 'Git Log Line',
     },
-    {
-      '<leader>Gs',
-      function()
-        Snacks.picker.git_status()
-      end,
-      desc = 'Git Status',
-    },
-    {
-      '<leader>GS',
-      function()
-        Snacks.picker.git_stash()
-      end,
-      desc = 'Git Stash',
-    },
+    -- {
+    --   '<leader>Gs',
+    --   function()
+    --     Snacks.picker.git_status()
+    --   end,
+    --   desc = 'Git Status',
+    -- },
+    -- {
+    --   '<leader>GS',
+    --   function()
+    --     Snacks.picker.git_stash()
+    --   end,
+    --   desc = 'Git Stash',
+    -- },
     {
       '<leader>Gd',
       function()
@@ -456,13 +449,13 @@ return {
       end,
       desc = 'Git Diff (Hunks)',
     },
-    {
-      '<leader>Gf',
-      function()
-        Snacks.picker.git_log_file()
-      end,
-      desc = 'Git Log File',
-    },
+    -- {
+    --   '<leader>Gf',
+    --   function()
+    --     Snacks.picker.git_log_file()
+    --   end,
+    --   desc = 'Git Log File',
+    -- },
     {
       '<leader>GB',
       function()
@@ -530,13 +523,6 @@ return {
       desc = 'Select Scratch Buffer',
     },
     {
-      '<leader>n',
-      function()
-        Snacks.notifier.show_history()
-      end,
-      desc = 'Notification History',
-    },
-    {
       '<leader>bd',
       function()
         Snacks.bufdelete()
@@ -551,18 +537,11 @@ return {
       desc = 'Rename File',
     },
     {
-      '<leader>og',
+      '<leader>tg',
       function()
         Snacks.lazygit()
       end,
       desc = 'Lazygit',
-    },
-    {
-      '<leader>un',
-      function()
-        Snacks.notifier.hide()
-      end,
-      desc = 'Dismiss All Notifications',
     },
     -- {
     --   '<leader>ot',
@@ -593,6 +572,28 @@ return {
       end,
       desc = 'Prev Reference',
       mode = { 'n', 't' },
+    },
+    -- Notifications
+    {
+      '<leader>nh',
+      function()
+        Snacks.picker.notifications()
+      end,
+      desc = 'Notification History',
+    },
+    {
+      '<leader>nh',
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = 'Notification History',
+    },
+    {
+      '<leader>nd',
+      function()
+        Snacks.notifier.hide()
+      end,
+      desc = 'Dismiss All Notifications',
     },
     -- {
     --   '<leader>N',
@@ -635,17 +636,17 @@ return {
         -- end
 
         -- Create some toggle mappings
-        Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>us'
-        Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>uw'
-        Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>uL'
-        Snacks.toggle.diagnostics():map '<leader>ud'
-        Snacks.toggle.line_number():map '<leader>ul'
-        Snacks.toggle.option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map '<leader>uc'
-        Snacks.toggle.treesitter():map '<leader>uT'
-        Snacks.toggle.option('background', { off = 'light', on = 'dark', name = 'Dark Background' }):map '<leader>ub'
-        Snacks.toggle.inlay_hints():map '<leader>uh'
-        Snacks.toggle.indent():map '<leader>ug'
-        Snacks.toggle.dim():map '<leader>uD'
+        Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>tus'
+        Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>tuw'
+        Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>tuL'
+        Snacks.toggle.diagnostics():map '<leader>tud'
+        Snacks.toggle.line_number():map '<leader>tul'
+        Snacks.toggle.option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map '<leader>tuc'
+        Snacks.toggle.treesitter():map '<leader>tuT'
+        -- Snacks.toggle.option('background', { off = 'light', on = 'dark', name = 'Dark Background' }):map '<leader>tub'
+        Snacks.toggle.inlay_hints():map '<leader>tuh'
+        Snacks.toggle.indent():map '<leader>tug'
+        Snacks.toggle.dim():map '<leader>tuD'
       end,
     })
   end,
