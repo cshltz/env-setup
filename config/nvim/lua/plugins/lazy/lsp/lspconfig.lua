@@ -2,14 +2,14 @@ return {
   {
     'neovim/nvim-lspconfig',
     enabled = true,
-    event = { 'BufReadPre', 'BufNewFile' },
+    -- can make load faster if I decide to get rid of mason-tool-installer
+    -- event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       {
         'mason-org/mason.nvim',
         opts = {
           registries = {
             'github:mason-org/mason-registry',
-            -- 'github:Crashdummyy/mason-registry',
           },
         },
       },
@@ -118,6 +118,7 @@ return {
             },
           },
         },
+        copilot = {},
       }
 
       local debuggers = {
@@ -145,12 +146,14 @@ return {
         automatic_installation = false,
         handlers = {
           function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            -- local server = servers[server_name] or {}
+            -- -- This handles overriding only values explicitly passed
+            -- -- by the server configuration above. Useful when disabling
+            -- -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            -- require('lspconfig')[server_name].setup(server)
+            --
+            vim.lsp.enable(server_name)
           end,
         },
       }
