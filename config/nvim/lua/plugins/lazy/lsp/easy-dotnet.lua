@@ -11,7 +11,7 @@ return {
 
       vim.keymap.set('n', '<leader>dnd', function()
         vim.cmd 'Dotnet debug default profile'
-      end, { nowait = true, desc = 'Start [D]ot[n]et [D]ebugging' })
+      end, { nowait = true, desc = 'Start Debugging' })
     end,
   },
 }

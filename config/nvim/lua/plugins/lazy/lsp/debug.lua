@@ -34,16 +34,16 @@ return {
       }
 
       -- Basic debugging keymaps, feel free to change to your liking!
-      vim.keymap.set('n', '<leader>dt', dapui.toggle, { desc = '[T]oggle' })
-      vim.keymap.set('n', '<leader>dc', dap.continue, { desc = '[C]ontinue' })
-      vim.keymap.set('n', '<leader>di', dap.step_into, { desc = 'Step [I]nto' })
-      vim.keymap.set('n', '<leader>do', dap.step_over, { desc = 'Step [O]ver' })
-      vim.keymap.set('n', '<leader>du', dap.step_out, { desc = 'Step O[u]t' })
+      vim.keymap.set('n', '<leader>dt', dapui.toggle, { desc = 'Toggle' })
+      vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Continue' })
+      vim.keymap.set('n', '<leader>di', dap.step_into, { desc = 'Step Into' })
+      vim.keymap.set('n', '<leader>do', dap.step_over, { desc = 'Step Over' })
+      vim.keymap.set('n', '<leader>du', dap.step_out, { desc = 'Step Out' })
 
-      vim.keymap.set('n', '<leader>bt', dap.toggle_breakpoint, { desc = '[B]reakpoint [T]oggle' })
+      vim.keymap.set('n', '<leader>bt', dap.toggle_breakpoint, { desc = 'Toggle' })
       vim.keymap.set('n', '<leader>bs', function()
         dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-      end, { desc = '[B]reakpoint [S]et' })
+      end, { desc = 'Set' })
 
       -- Dap UI setup
       -- For more information, see |:help nvim-dap-ui|

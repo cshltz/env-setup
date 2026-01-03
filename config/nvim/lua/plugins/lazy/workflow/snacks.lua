@@ -376,21 +376,21 @@ return {
       function()
         Snacks.picker.lsp_type_definitions()
       end,
-      desc = 'Goto T[y]pe Definition',
+      desc = 'Goto Type Definition',
     },
     {
       '<leader>gci',
       function()
         Snacks.picker.lsp_incoming_calls()
       end,
-      desc = '[C]alls [I]ncoming',
+      desc = 'Incoming',
     },
     {
       '<leader>gco',
       function()
         Snacks.picker.lsp_outgoing_calls()
       end,
-      desc = '[C]alls [O]utgoing',
+      desc = 'Outgoing',
     },
     {
       '<leader>ss',
@@ -523,7 +523,7 @@ return {
       desc = 'Select Scratch Buffer',
     },
     {
-      '<leader>bd',
+      '<leader>bfd',
       function()
         Snacks.bufdelete()
       end,

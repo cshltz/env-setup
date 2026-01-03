@@ -8,32 +8,32 @@ return {
       {
         '<leader>trx',
         '<cmd>Trouble diagnostics toggle<cr>',
-        desc = '[Tr]ouble Diagnostics',
+        desc = 'Diagnostics',
       },
       {
         '<leader>trX',
         '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-        desc = '[Tr]ouble Buffer Diagnostics',
+        desc = 'Buffer Diagnostics',
       },
       {
         '<leader>trs',
         '<cmd>Trouble symbols toggle focus=false<cr>',
-        desc = '[Tr]ouble Symbols',
+        desc = 'Symbols',
       },
       {
         '<leader>trl',
         '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
-        desc = '[Tr]ouble LSP Definitions',
+        desc = 'LSP Definitions',
       },
       {
         '<leader>trL',
         '<cmd>Trouble loclist toggle<cr>',
-        desc = '[Tr]ouble Location List',
+        desc = 'Location List',
       },
       {
         '<leader>trQ',
         '<cmd>Trouble qflist toggle<cr>',
-        desc = '[Tr]ouble Quickfix List',
+        desc = 'Quickfix List',
       },
     },
   },

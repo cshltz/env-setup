@@ -20,8 +20,8 @@ return {
           vim.keymap.set(mode, l, r, opts)
         end
         -- Toggles
-        map('n', '<leader>Gtb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle [b]lame' })
-        map('n', '<leader>GtD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
+        map('n', '<leader>tGb', gitsigns.toggle_current_line_blame, { desc = 'Blame' })
+        map('n', '<leader>tGd', gitsigns.preview_hunk_inline, { desc = 'Show Deleted' })
       end,
     },
   },
