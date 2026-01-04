@@ -1,0 +1,24 @@
+return {
+  -- {
+  --   'zbirenbaum/copilot.lua',
+  --   cmd = 'Copilot',
+  --   event = 'InsertEnter',
+  --   config = function()
+  --     require('copilot').setup {
+  --       suggestion = {
+  --         enabled = not vim.g.ai_cmp,
+  --         auto_trigger = true,
+  --         hide_during_completion = vim.g.ai_cmp,
+  --         keymap = {
+  --           accept = false,
+  --         },
+  --       },
+  --       panel = { enabled = false },
+  --       filetypes = {
+  --         markdown = true,
+  --         help = true,
+  --       },
+  --     }
+  --   end,
+  -- },
+}

@@ -39,7 +39,7 @@ return {
       {
         '<leader>aa',
         function()
-          require('sidekick.cli').toggle()
+          require('sidekick.cli').toggle { filter = { installed = true } }
         end,
         desc = 'Sidekick Toggle CLI',
       },
@@ -47,7 +47,6 @@ return {
         '<leader>as',
         function()
           require('sidekick.cli').select { filter = { installed = true } }
-          -- require('sidekick.cli').select()
         end,
         desc = 'Select CLI',
       },
