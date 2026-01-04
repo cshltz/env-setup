@@ -2,17 +2,32 @@ return {
   {
     'folke/sidekick.nvim',
     enabled = false,
-    lazy = true,
-    opts = {
-      -- add any options here
-      -- cli = {
-      --   mux = {
-      --     backend = 'zellij',
-      --     enabled = true,
-      --   },
-      -- },
-    },
+    lazy = false,
+    config = function()
+      -- vim.lsp.inline_completion.enable(true)
+      require('sidekick').setup {}
+    end,
+    -- opts = {
+    --   -- add any options here
+    --   -- cli = {
+    --   --   mux = {
+    --   --     backend = 'zellij',
+    --   --     enabled = true,
+    --   --   },
+    --   -- },
+    -- },
     keys = {
+      {
+        '<tab>',
+        function()
+          -- if there is a next edit, jump to it, otherwise apply it if any
+          if not require('sidekick').nes_jump_or_apply() then
+            return '<Tab>' -- fallback to normal tab
+          end
+        end,
+        expr = true,
+        desc = 'Goto/Apply Next Edit Suggestion',
+      },
       {
         '<c-.>',
         function()
@@ -24,7 +39,7 @@ return {
       {
         '<leader>aa',
         function()
-          require('sidekick.cli').toggle { filter = { installed = true } }
+          require('sidekick.cli').toggle()
         end,
         desc = 'Sidekick Toggle CLI',
       },
@@ -32,6 +47,7 @@ return {
         '<leader>as',
         function()
           require('sidekick.cli').select { filter = { installed = true } }
+          -- require('sidekick.cli').select()
         end,
         desc = 'Select CLI',
       },
