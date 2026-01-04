@@ -118,7 +118,7 @@ return {
             },
           },
         },
-        copilot = {},
+        -- copilot = {},
       }
 
       local debuggers = {
@@ -141,7 +141,7 @@ return {
       vim.list_extend(ensure_installed, formatters)
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-      vim.lsp.inline_completion(true)
+      -- vim.lsp.inline_completion.enable(true)
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (populates installs via mason-tool-installer)
         automatic_installation = false,

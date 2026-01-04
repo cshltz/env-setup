@@ -1,8 +1,8 @@
 return {
   {
     'folke/sidekick.nvim',
-    enabled = true,
-    lazy = false,
+    enabled = false,
+    lazy = true,
     opts = {
       -- add any options here
       -- cli = {
@@ -14,17 +14,6 @@ return {
     },
     keys = {
       {
-        '<tab>',
-        function()
-          -- if there is a next edit, jump to it, otherwise apply it if any
-          if not require('sidekick').nes_jump_or_apply() then
-            return '<Tab>' -- fallback to normal tab
-          end
-        end,
-        expr = true,
-        desc = 'Goto/Apply Next Edit Suggestion',
-      },
-      {
         '<c-.>',
         function()
           require('sidekick.cli').toggle()
@@ -35,7 +24,7 @@ return {
       {
         '<leader>aa',
         function()
-          require('sidekick.cli').toggle()
+          require('sidekick.cli').toggle { filter = { installed = true } }
         end,
         desc = 'Sidekick Toggle CLI',
       },
@@ -43,7 +32,6 @@ return {
         '<leader>as',
         function()
           require('sidekick.cli').select { filter = { installed = true } }
-          -- require('sidekick.cli').select()
         end,
         desc = 'Select CLI',
       },
